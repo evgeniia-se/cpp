@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: esergeev <esergeev@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/09 19:59:07 by esergeev          #+#    #+#             */
+/*   Updated: 2026/02/11 20:05:01 by esergeev         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Contact.hpp"
 
 void Contact::setFirstName(const std::string& str){
@@ -48,49 +60,73 @@ std::string Contact::getDarkestSecret(void) const{
     return(this->_darkestSecret);
 }
 
+static bool valid_input(const std::string command){
+    std::string str = command;
+    if (str.empty())
+        return false;
+    for (size_t i = 0; i < str.length(); i++){
+        if (!std::isspace(str[i]))
+            return true;
+    }
+    return false;
+}
 
 void Contact::fillInfo(void){
 
-    std::string comand;
+    std::string command;
 
     std::cout << "Enter first name" << std::endl;
-    std::getline(std::cin, comand);
-    while (comand.empty())
+    if (!std::getline(std::cin, command))
+        return;
+    while (!valid_input(command))
     {
         std::cout << "Field cannot be empty. Enter first name" << std::endl;
-        std::getline(std::cin, comand);
+        if (!std::getline(std::cin, command))
+            return;
     }
-    this->setFirstName(comand);
+    this->setFirstName(command);
+
     std::cout << "Enter last name" << std::endl;
-    std::getline(std::cin, comand);
-    while (comand.empty())
+    if (!std::getline(std::cin, command))
+        return;
+    while (!valid_input(command))
     {
         std::cout << "Field cannot be empty. Enter last name" << std::endl;
-        std::getline(std::cin, comand);
+        if(!std::getline(std::cin, command))
+            return;
     }
-    this->setLastName(comand);
+    this->setLastName(command);
+
     std::cout << "Enter nickname" << std::endl;
-    std::getline(std::cin, comand);
-    while (comand.empty())
+    if (!std::getline(std::cin, command))
+        return;
+    while (!valid_input(command))
     {
         std::cout << "Field cannot be empty. Enter nickname" << std::endl;
-        std::getline(std::cin, comand);
+        if(!std::getline(std::cin, command))
+            return;
     }
-    this->setNickName(comand);
+    this->setNickName(command);
+
     std::cout << "Enter phone number" << std::endl;
-    std::getline(std::cin, comand);
-    while (comand.empty())
+    if (!std::getline(std::cin, command))
+        return;
+    while (!valid_input(command))
     {
         std::cout << "Field cannot be empty. Enter phone number" << std::endl;
-        std::getline(std::cin, comand);
+        if (!std::getline(std::cin, command))
+            return;
     }
-    this->setPhoneNumber(comand);
+    this->setPhoneNumber(command);
+
     std::cout << "Enter darkest secret" << std::endl;
-    std::getline(std::cin, comand);
-    while (comand.empty())
+    if (!std::getline(std::cin, command))
+        return;
+    while (!valid_input(command))
     {
         std::cout << "Field cannot be empty. Enter darkest secret" << std::endl;
-        std::getline(std::cin, comand);
+        if (!std::getline(std::cin, command))
+            return;
     }
-    this->setDarkestSecret(comand);
+    this->setDarkestSecret(command);
 }

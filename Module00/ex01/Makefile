@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: esergeev <esergeev@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2026/02/09 19:59:18 by esergeev          #+#    #+#              #
+#    Updated: 2026/02/09 21:40:24 by esergeev         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = phonebook
 
 MAKEFLAGS += --no-builtin-rules
@@ -6,7 +18,7 @@ MAKEFLAGS += --no-builtin-rules
 SRC_DIR = .
 OBJ_DIR = obj
 SOURCES = PhoneBook.cpp Contact.cpp main.cpp
-OBJECTS = $(SOURCES:%.cpp=$(OBJ_DIR)/%.o)
+OBJECTS = $(addprefix $(OBJ_DIR)/, $(SOURCES:.cpp=.o))
 
 CC = c++
 RM = rm -f
@@ -30,7 +42,6 @@ gdb: CFLAGS += $(GDBFLAGS)
 gdb: re
 
 clean:
-	$(RM) $(SOURCES:.cpp=.o)
 	rm -rf $(OBJ_DIR)
 
 fclean: clean

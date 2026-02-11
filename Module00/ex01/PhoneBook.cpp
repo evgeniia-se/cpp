@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: esergeev <esergeev@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/09 19:59:21 by esergeev          #+#    #+#             */
+/*   Updated: 2026/02/11 19:49:30 by esergeev         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -15,8 +27,13 @@ void PhoneBook::addContact(void){
     if (this->_count < 8)
         _count++;
 }
-
+//length before 10 char
 static std::string cut_info(const std::string& str) {
+    /*std::string res = str;
+    for (size_t i = 0; i < res.length(); i++){
+        if (res[i] == '\t' || '\r')
+            res[i] = ' ';
+        }*/
     if (str.length() > 10)
         return str.substr(0, 9) + ".";
     return str;
@@ -32,25 +49,28 @@ void PhoneBook::searchContact(void) const {
 		std::cout << "Phone book is empty." << std::endl;
 		return ;
 	}
+
+    //write table header
     std::cout << "|" << std::setw(10) << "Index";
     std::cout << "|" << std::setw(10) << "First Name";
     std::cout << "|" << std::setw(10) << "Last Name";
     std::cout << "|" << std::setw(10) << "Nickname";
 	std::cout << "|" << std::endl;
-//std::cout << "|" << std::setw(10) << "Darkest Secret" << std::endl;
 
+    // write table rows
     for (i = 0; i < this->_count; i++)
     {
         std::cout << "|" << std::setw(10) << i;
-
         std::cout << "|" << std::setw(10) << cut_info(this->Book[i].getFirstName());
         std::cout << "|" << std::setw(10) << cut_info(this->Book[i].getLastName());
         std::cout << "|" << std::setw(10) << cut_info(this->Book[i].getNickName());
 		std::cout << "|" << std::endl;
     }
+    //question user for index to show details
     std::cout << "Enter index to see details: ";
     if (!std::getline(std::cin, command))
         return;
+    //check length of arguments and number from 0 to 7(8)
     if (command.length() == 1 && command[0] >= '0' && command[0] <= '7')
     {
         j = command[0] - '0';

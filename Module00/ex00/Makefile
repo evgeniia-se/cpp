@@ -1,9 +1,21 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: esergeev <esergeev@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2026/02/09 19:58:52 by esergeev          #+#    #+#              #
+#    Updated: 2026/02/10 18:16:08 by esergeev         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = megaphone
 
 SRC_DIR = .
 OBJ_DIR = obj
 SOURCES = megaphone.cpp
-OBJECTS = $(subst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SOURCES))
+OBJECTS = $(addprefix $(OBJ_DIR)/, $(SOURCES:.cpp=.o                                        ))
 
 CC = c++
 RM = rm -f
