@@ -6,7 +6,7 @@
 /*   By: esergeev <esergeev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 19:59:21 by esergeev          #+#    #+#             */
-/*   Updated: 2026/02/11 19:49:30 by esergeev         ###   ########.fr       */
+/*   Updated: 2026/02/11 22:23:24 by esergeev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,6 @@ void PhoneBook::addContact(void){
 }
 //length before 10 char
 static std::string cut_info(const std::string& str) {
-    /*std::string res = str;
-    for (size_t i = 0; i < res.length(); i++){
-        if (res[i] == '\t' || '\r')
-            res[i] = ' ';
-        }*/
     if (str.length() > 10)
         return str.substr(0, 9) + ".";
     return str;

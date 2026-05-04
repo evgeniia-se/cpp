@@ -1,0 +1,23 @@
+{
+    "tasks": [
+        {
+            "label": "Build ex00 (gdb)",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "gdb"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/ex00"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ],
+    "version": "2.0.0"
+}
